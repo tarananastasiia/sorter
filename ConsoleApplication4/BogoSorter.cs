@@ -35,6 +35,7 @@ namespace ConsoleApplication4
         {
             while (!IsSorted(a))
             {
+
                 a = RandomPermutation(a);
             }
             return a;
