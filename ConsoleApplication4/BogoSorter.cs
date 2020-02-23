@@ -26,8 +26,9 @@ namespace ConsoleApplication4
                 n--;
                 var i = random.Next(n + 1);
                 var temp = a[i];
-                a[i] = a[n];
+                a[i] = a[n]; 
                 a[n] = temp;
+                
             }
             return a;
         }
