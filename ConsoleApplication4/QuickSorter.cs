@@ -29,7 +29,7 @@ namespace ConsoleApplication4
             Swap(ref array[pivot], ref array[maxIndex]);
             return pivot;
         }
-        public static int[] QuickSort(int[] array, int minIndex, int maxIndex)
+        public  int[] QuickSort(int[] array, int minIndex, int maxIndex)
         {
             if (minIndex >= maxIndex)
             {
@@ -40,7 +40,7 @@ namespace ConsoleApplication4
             QuickSort(array, pivotIndex + 1, maxIndex);
             return array;
         }
-        public static int[] QuickSort(int[] array)
+        public int[] QuickSort(int[] array)
         {
             return QuickSort(array, 0, array.Length - 1);
         }

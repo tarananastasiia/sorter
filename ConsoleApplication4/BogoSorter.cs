@@ -8,7 +8,7 @@ namespace ConsoleApplication4
 {
     public class BogoSorter
     {
-        public static bool IsSorted(int[] a)
+        public  bool IsSorted(int[] a)
         {
             for (int i = 0; i < a.Length - 1; i++)
             {
@@ -17,7 +17,7 @@ namespace ConsoleApplication4
             }
             return true;
         }
-        public static int[] RandomPermutation(int[] a)
+        public int[] RandomPermutation(int[] a)
         {
             Random random = new Random();
             var n = a.Length;
@@ -32,7 +32,7 @@ namespace ConsoleApplication4
             }
             return a;
         }
-        public static int[] BogoSort(int[] a)
+        public int[] BogoSort(int[] a)
         {
             while (!IsSorted(a))
             {
