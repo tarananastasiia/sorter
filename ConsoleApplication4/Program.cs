@@ -16,96 +16,100 @@ namespace ConsoleApplication4
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
 
-            Console.WriteLine("Виберіть спосіб вводу даних:" + '\n' + "1-В консолі." + '\n' + "2-В файлі.");
+            Console.WriteLine("Виберіть спосіб вводу даних:" + '\n' + "1-В консолі." + '\n' + "2-В файлі." + '\n'
+                + "3-Рандомно.");
             int x = Convert.ToInt32(Console.ReadLine());
+
+            ISort sorter;
+            IMatrixInputer inputer;
+            ArrayTranspontator array = new ArrayTranspontator();
+            string sorterMenu = "Оберіть метод сортування:" + '\n' + "1-Метод бульбашки" + '\n' +
+                    "2-Швидка сортіровка" + '\n' + "3-Шейкерна сортіровка" + '\n' + "4-Випадкова сортіровка";
             if (x == 1)
             {
-                Console.WriteLine("Введіть розмірність матриці даних:");
-                int line = Convert.ToInt32(Console.ReadLine());
-                int column = Convert.ToInt32(Console.ReadLine());
-                int[,] mas = new int[line, column];
-                int[] mas1 = new int[line * column];
-                int z = 0;
-                Console.WriteLine("Заповніть матрицю:");
-                for (int i = 0; i < line; i++)
-                {
-                    for (int j = 0; j < column; j++)
-                    {
-                        mas[i, j] = Convert.ToInt32(Console.ReadLine());
-                        mas1[z] = mas[i, j];
-                        z++;
-                    }
-                }
-                Console.WriteLine("Оберіть метод сортування:" + '\n' + "1-Метод бульбашки" + '\n' +
-                    "2-Швидка сортіровка" + '\n' + "3-Шейкерна сортіровка" + '\n' + "4-Випадкова сортіровка");
+                inputer = new ConsolMatrix();
+                int[,] m = inputer.GetMatrix();
+
+                Console.WriteLine(sorterMenu);
                 int y = Convert.ToInt32(Console.ReadLine());
                 if (y == 1)
                 {
-                    BubbleSorter bubbleSort = new BubbleSorter();
-                    bubbleSort.BubbleSort(mas1);
+                    sorter = new BubbleSorter();
                 }
-                if (y == 2)
+                else if (y == 2)
                 {
-                    QuickSorter quick = new QuickSorter();
-                    quick.QuickSort(mas1);
+                    sorter = new QuickSorter();
                 }
-                if (y == 3)
+                else if (y == 3)
                 {
-                    ShakerSorter shaker = new ShakerSorter();
-                    shaker.ShakerSort(mas1);
+                    sorter = new ShakerSorter();
                 }
-                if (y == 4)
+                else
                 {
-                    BogoSorter bogo = new BogoSorter();
-                    bogo.BogoSort(mas1);
+                    sorter = new BogoSorter();
                 }
-                Matrix matrix = new Matrix();
-                mas = matrix.CreateMatrix(mas1, line, column);
+
+                MatrixTranspontator matrix = new MatrixTranspontator();
+                matrix.CreateMatrix(sorter.Sort(array.TranslationIntoAOneDimensionalArray(m)), m.GetLength(0),
+                    m.GetLength(1));
             }
             if (x == 2)
             {
-                List<int> stringInInt = new List<int>();
-                string path = @"C:\Users\home_pc\Desktop\file.txt";
-                string[] sentense = File.ReadAllLines(path);
-                for (int i = 0; i < sentense.Length; i++)
-                {
-                    string[] split = sentense[i].Split(' ');
-                    for (int j = 0; j < split.Length; j++)
-                    {
-                        stringInInt.Add(Int32.Parse(split[j]));
-                    }
-                }
-                int[] fileMas = new int[stringInInt.Count];
-                for (int k = 0; k < stringInInt.Count; k++)
-                {
-                    fileMas[k] = stringInInt[k];
-                }
-                Console.WriteLine("Оберіть метод сортування:" + '\n' + "1-Метод бульбашки" + '\n' +
-                    "2-Швидка сортіровка" + '\n' + "3-Шейкерна сортіровка" + '\n' + "4-Випадкова сортіровка");
+                inputer = new FileMatrix();
+                int[,] m = inputer.GetMatrix();
+
+                Console.WriteLine(sorterMenu);
                 int y = Convert.ToInt32(Console.ReadLine());
-                int[,] mas = new int[sentense.Length, fileMas.Length / sentense.Length];
+
                 if (y == 1)
                 {
-                    BubbleSorter bubbleSort = new BubbleSorter();
-                    bubbleSort.BubbleSort(fileMas);
+                    sorter = new BubbleSorter();
                 }
-                if (y == 2)
+                else if (y == 2)
                 {
-                    QuickSorter quick = new QuickSorter();
-                    quick.QuickSort(fileMas);
+                    sorter = new QuickSorter();
                 }
-                if (y == 3)
+                else if (y == 3)
                 {
-                    ShakerSorter shaker = new ShakerSorter();
-                    shaker.ShakerSort(fileMas);
+                    sorter = new ShakerSorter();
                 }
-                if (y == 4)
+                else
                 {
-                    BogoSorter bogo = new BogoSorter();
-                    bogo.BogoSort(fileMas);
+                    sorter = new BogoSorter();
                 }
-                Matrix matrix = new Matrix();
-                mas = matrix.CreateMatrix(fileMas, sentense.Length, fileMas.Length / sentense.Length);
+
+                MatrixTranspontator matrix = new MatrixTranspontator();
+                matrix.CreateMatrix(sorter.Sort(array.TranslationIntoAOneDimensionalArray(m)), m.GetLength(0),
+                    m.GetLength(1));
+            }
+            if (x == 3)
+            {
+                inputer = new RandomMatrix();
+                int[,] m = inputer.GetMatrix();
+
+                Console.WriteLine(sorterMenu);
+                int y = Convert.ToInt32(Console.ReadLine());
+                if (y == 1)
+                {
+                    sorter = new BubbleSorter();
+                }
+                else if (y == 2)
+                {
+                    sorter = new QuickSorter();
+                }
+                else if (y == 3)
+                {
+                    sorter = new ShakerSorter();
+                }
+                else
+                {
+                    sorter = new BogoSorter();
+                }
+
+                MatrixTranspontator matrix = new MatrixTranspontator();
+                matrix.CreateMatrix(sorter.Sort(array.TranslationIntoAOneDimensionalArray(m)),
+                    m.GetLength(0),
+                    m.GetLength(1));
             }
             stopwatch.Stop();
             Console.WriteLine($"time is: { stopwatch.ElapsedMilliseconds}");

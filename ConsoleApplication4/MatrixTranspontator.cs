@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApplication4
 {
-    public class Matrix
+    public class MatrixTranspontator
     {
         public T[,] CreateMatrix<T>(T[] array,int rows,int col)
         {

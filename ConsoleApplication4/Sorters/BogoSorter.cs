@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApplication4
 {
-    public class BogoSorter
+    public class BogoSorter:ISort
     {
         public  bool IsSorted(int[] a)
         {
@@ -32,7 +32,7 @@ namespace ConsoleApplication4
             }
             return a;
         }
-        public int[] BogoSort(int[] a)
+        public int[] Sort(int[] a)
         {
             while (!IsSorted(a))
             {

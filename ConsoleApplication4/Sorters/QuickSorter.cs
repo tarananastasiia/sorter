@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApplication4
 {
-    public class QuickSorter
+    public class QuickSorter:ISort
     {
         public static void Swap(ref int x, ref int y)
         {
@@ -29,20 +29,20 @@ namespace ConsoleApplication4
             Swap(ref array[pivot], ref array[maxIndex]);
             return pivot;
         }
-        public  int[] QuickSort(int[] array, int minIndex, int maxIndex)
+        public  int[] Sort(int[] array, int minIndex, int maxIndex)
         {
             if (minIndex >= maxIndex)
             {
                 return array;
             }
             var pivotIndex = Partition(array, minIndex, maxIndex);
-            QuickSort(array, minIndex, pivotIndex - 1);
-            QuickSort(array, pivotIndex + 1, maxIndex);
+            Sort(array, minIndex, pivotIndex - 1);
+            Sort(array, pivotIndex + 1, maxIndex);
             return array;
         }
-        public int[] QuickSort(int[] array)
+        public int[] Sort(int[] array)
         {
-            return QuickSort(array, 0, array.Length - 1);
+            return Sort(array, 0, array.Length - 1);
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApplication4
 {
-    public class BubbleSorter
+    public class BubbleSorter:ISort
     {
         public static void Swap(ref int e1, ref int e2)
         {
@@ -14,7 +14,7 @@ namespace ConsoleApplication4
             e1 = e2;
             e2 = temp;
         }
-        public  int[] BubbleSort(int[] array)
+        public  int[] Sort(int[] array)
         {
             var len = array.Length;
             for (var i = 1; i < len; i++)
@@ -29,6 +29,7 @@ namespace ConsoleApplication4
             }
             return array;
         }
+
 
     }
 }

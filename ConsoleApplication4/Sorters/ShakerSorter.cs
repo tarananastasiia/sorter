@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApplication4
 {
-    public class ShakerSorter
+    public class ShakerSorter:ISort
     {
         public void Swap(ref int e1, ref int e2)
         {
@@ -14,7 +14,7 @@ namespace ConsoleApplication4
             e1 = e2;
             e2 = temp;
         }
-        public int[] ShakerSort(int[] array)
+        public int[] Sort(int[] array)
         {
             for (var i = 0; i < array.Length / 2; i++)
             {
