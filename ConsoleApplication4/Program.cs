@@ -16,101 +16,49 @@ namespace ConsoleApplication4
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
 
-            Console.WriteLine("Виберіть спосіб вводу даних:" + '\n' + "1-В консолі." + '\n' + "2-В файлі." + '\n'
-                + "3-Рандомно.");
+            ISort sorter=null;
+            IMatrixInputer inputer = null;
+            ArrayTranspontator array = new ArrayTranspontator();
+
+            List<IMatrixInputer> inputers = new List<IMatrixInputer>()
+            {
+                new ConsolMatrix(),
+                new FileMatrix(),
+                new RandomMatrix()
+            };
+
+            List<ISort> nameSort = new List<ISort>()
+            {
+                new BubbleSorter(),
+                new QuickSorter(),
+                new ShakerSorter(),
+                new BogoSorter()
+            };
+
+            Console.WriteLine("Оберіть спосіб вводу даних в матрицю: ");
+            for (int i = 0; i < inputers.Count; i++)
+            {
+                Console.WriteLine($"{i + 1}- {inputers[i].InputerName}");
+            }
             int x = Convert.ToInt32(Console.ReadLine());
 
-            ISort sorter;
-            IMatrixInputer inputer;
-            ArrayTranspontator array = new ArrayTranspontator();
-            string sorterMenu = "Оберіть метод сортування:" + '\n' + "1-Метод бульбашки" + '\n' +
-                    "2-Швидка сортіровка" + '\n' + "3-Шейкерна сортіровка" + '\n' + "4-Випадкова сортіровка";
-            if (x == 1)
+            inputer = inputers[x - 1];
+
+            int[,] m = inputer.GetMatrix();
+
+            Console.WriteLine("Оберіть метод сортування:");
+            for (int i = 0; i < nameSort.Count; i++)
             {
-                inputer = new ConsolMatrix();
-                int[,] m = inputer.GetMatrix();
-
-                Console.WriteLine(sorterMenu);
-                int y = Convert.ToInt32(Console.ReadLine());
-                if (y == 1)
-                {
-                    sorter = new BubbleSorter();
-                }
-                else if (y == 2)
-                {
-                    sorter = new QuickSorter();
-                }
-                else if (y == 3)
-                {
-                    sorter = new ShakerSorter();
-                }
-                else
-                {
-                    sorter = new BogoSorter();
-                }
-
-                MatrixTranspontator matrix = new MatrixTranspontator();
-                matrix.CreateMatrix(sorter.Sort(array.TranslationIntoAOneDimensionalArray(m)), m.GetLength(0),
-                    m.GetLength(1));
+                Console.WriteLine($"{i + 1}- {nameSort[i].SortName}");
             }
-            if (x == 2)
-            {
-                inputer = new FileMatrix();
-                int[,] m = inputer.GetMatrix();
+            int y = Convert.ToInt32(Console.ReadLine());
 
-                Console.WriteLine(sorterMenu);
-                int y = Convert.ToInt32(Console.ReadLine());
+            sorter = nameSort[y - 1];
 
-                if (y == 1)
-                {
-                    sorter = new BubbleSorter();
-                }
-                else if (y == 2)
-                {
-                    sorter = new QuickSorter();
-                }
-                else if (y == 3)
-                {
-                    sorter = new ShakerSorter();
-                }
-                else
-                {
-                    sorter = new BogoSorter();
-                }
+            MatrixTranspontator matrix = new MatrixTranspontator();
+            matrix.CreateMatrix(sorter.Sort(array.TranslationIntoAOneDimensionalArray(m)), m.GetLength(0),
+                m.GetLength(1));
 
-                MatrixTranspontator matrix = new MatrixTranspontator();
-                matrix.CreateMatrix(sorter.Sort(array.TranslationIntoAOneDimensionalArray(m)), m.GetLength(0),
-                    m.GetLength(1));
-            }
-            if (x == 3)
-            {
-                inputer = new RandomMatrix();
-                int[,] m = inputer.GetMatrix();
-
-                Console.WriteLine(sorterMenu);
-                int y = Convert.ToInt32(Console.ReadLine());
-                if (y == 1)
-                {
-                    sorter = new BubbleSorter();
-                }
-                else if (y == 2)
-                {
-                    sorter = new QuickSorter();
-                }
-                else if (y == 3)
-                {
-                    sorter = new ShakerSorter();
-                }
-                else
-                {
-                    sorter = new BogoSorter();
-                }
-
-                MatrixTranspontator matrix = new MatrixTranspontator();
-                matrix.CreateMatrix(sorter.Sort(array.TranslationIntoAOneDimensionalArray(m)),
-                    m.GetLength(0),
-                    m.GetLength(1));
-            }
             stopwatch.Stop();
             Console.WriteLine($"time is: { stopwatch.ElapsedMilliseconds}");
             Console.ReadLine();

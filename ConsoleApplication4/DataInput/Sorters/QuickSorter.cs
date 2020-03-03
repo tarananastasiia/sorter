@@ -8,6 +8,7 @@ namespace ConsoleApplication4
 {
     public class QuickSorter:ISort
     {
+        public string SortName => "Швидке сортування";
         public static void Swap(ref int x, ref int y)
         {
             var t = x;

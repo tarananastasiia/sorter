@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace ConsoleApplication4
 {
-    interface ISort
+    public interface IMatrixInputer
     {
-        int[] Sort(int[] x);
+        string InputerName { get; }
+        int[,] GetMatrix();
     }
 }

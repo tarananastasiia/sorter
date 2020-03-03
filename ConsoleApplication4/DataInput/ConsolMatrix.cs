@@ -8,6 +8,7 @@ namespace ConsoleApplication4
 {
     public class ConsolMatrix : IMatrixInputer
     {
+        public string InputerName => "Ввод даних матриці в консолі";
         public int[,] GetMatrix()
         {
             Console.WriteLine("Введіть розмірність матриці  даних:");

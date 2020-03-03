@@ -8,6 +8,7 @@ namespace ConsoleApplication4
 {
     class RandomMatrix:IMatrixInputer
     {
+        public string InputerName => "Ввод даних матриці рандомно";
         public int[,] GetMatrix()
         {
             Console.WriteLine("Введіть розмірність матриці  даних:");

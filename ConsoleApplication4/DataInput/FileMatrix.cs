@@ -10,6 +10,8 @@ namespace ConsoleApplication4
 {
     class FileMatrix : IMatrixInputer
     {
+
+        public string InputerName => "Ввод даних матриці у файлі";
         public int[,] GetMatrix()
         {
             List<int> stringInInt = new List<int>();

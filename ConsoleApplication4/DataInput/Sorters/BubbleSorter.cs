@@ -8,7 +8,8 @@ namespace ConsoleApplication4
 {
     public class BubbleSorter:ISort
     {
-        public static void Swap(ref int e1, ref int e2)
+        public string SortName => "Метод бульбашки";
+        public void Swap(ref int e1, ref int e2)
         {
             var temp = e1;
             e1 = e2;

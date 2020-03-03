@@ -8,6 +8,7 @@ namespace ConsoleApplication4
 {
     public class ShakerSorter:ISort
     {
+        public string SortName => "Шейкерне сортування";
         public void Swap(ref int e1, ref int e2)
         {
             var temp = e1;

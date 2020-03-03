@@ -8,6 +8,7 @@ namespace ConsoleApplication4
 {
     public class BogoSorter:ISort
     {
+        public string SortName => "Рандомне сортування";
         public  bool IsSorted(int[] a)
         {
             for (int i = 0; i < a.Length - 1; i++)
