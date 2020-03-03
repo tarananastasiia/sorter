@@ -40,24 +40,24 @@ namespace ConsoleApplication4
             {
                 Console.WriteLine($"{i + 1}- {inputers[i].InputerName}");
             }
-            int x = Convert.ToInt32(Console.ReadLine());
+            int dataEntrySelectionNumber = Convert.ToInt32(Console.ReadLine());
 
-            inputer = inputers[x - 1];
+            inputer = inputers[dataEntrySelectionNumber - 1];
 
-            int[,] m = inputer.GetMatrix();
+            int[,] mas = inputer.GetMatrix();
 
             Console.WriteLine("Оберіть метод сортування:");
             for (int i = 0; i < nameSort.Count; i++)
             {
                 Console.WriteLine($"{i + 1}- {nameSort[i].SortName}");
             }
-            int y = Convert.ToInt32(Console.ReadLine());
+            int sortMethodSelectionNumber = Convert.ToInt32(Console.ReadLine());
 
-            sorter = nameSort[y - 1];
+            sorter = nameSort[sortMethodSelectionNumber - 1];
 
             MatrixTranspontator matrix = new MatrixTranspontator();
-            matrix.CreateMatrix(sorter.Sort(array.TranslationIntoAOneDimensionalArray(m)), m.GetLength(0),
-                m.GetLength(1));
+            matrix.CreateMatrix(sorter.Sort(array.TranslationIntoAOneDimensionalArray(mas)), mas.GetLength(0),
+                mas.GetLength(1));
 
             stopwatch.Stop();
             Console.WriteLine($"time is: { stopwatch.ElapsedMilliseconds}");
