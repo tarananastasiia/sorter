@@ -37,9 +37,8 @@ namespace ConsoleApplication4
             ArrayTranspontator array = new ArrayTranspontator();
 
             int[,] mas = inputer.GetMatrix();
-
-            MatrixTranspontator matrix = new MatrixTranspontator();
-            matrix.CreateMatrix(sorter.Sort(array.TranslationIntoAOneDimensionalArray(mas)), mas.GetLength(0),
+            
+            array.CreateMatrix(sorter.Sort(array.TranslationIntoAOneDimensionalArray(mas)), mas.GetLength(0),
                 mas.GetLength(1));
 
             stopwatch.Stop();
@@ -52,7 +51,7 @@ namespace ConsoleApplication4
             Console.WriteLine("Оберіть спосіб вводу даних в матрицю: ");
             for (int i = 0; i < _inputers.Count; i++)
             {
-                Console.WriteLine($"{i + 1}- {_inputers[i].InputerName}");
+                Console.WriteLine($"{i + 1} - {_inputers[i].InputerName}");
             }
 
             int dataEntrySelectionNumber;
@@ -86,7 +85,7 @@ namespace ConsoleApplication4
             Console.WriteLine("Оберіть метод сортування:");
             for (int i = 0; i < _listOfSorters.Count; i++)
             {
-                Console.WriteLine($"{i + 1}- {_listOfSorters[i].SortName}");
+                Console.WriteLine($"{i + 1} - {_listOfSorters[i].SortName}");
             }
 
             int sortMethodSelectionNumber;

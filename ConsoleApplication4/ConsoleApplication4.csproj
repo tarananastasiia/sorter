@@ -49,7 +49,6 @@
     <Compile Include="DataInput\IMatrixInputer.cs" />
     <Compile Include="Helpers\ConsoleHelper.cs" />
     <Compile Include="Sorters\ISorter.cs" />
-    <Compile Include="MatrixTranspontator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sorters\BubbleSorter.cs" />
