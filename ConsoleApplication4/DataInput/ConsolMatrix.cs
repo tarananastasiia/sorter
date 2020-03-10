@@ -12,8 +12,26 @@ namespace ConsoleApplication4
         public int[,] GetMatrix()
         {
             Console.WriteLine("Введіть розмірність матриці  даних:");
-            int line = Convert.ToInt32(Console.ReadLine());
-            int column = Convert.ToInt32(Console.ReadLine());
+
+            int line;
+            string a = Console.ReadLine();
+            if (!int.TryParse(a, out line) || line < 1)
+            {
+                Console.WriteLine("Некоректний ввод");
+                return GetMatrix();
+            }
+
+            int column;
+            string b = Console.ReadLine();
+            if (!int.TryParse(b, out column) || column < 1)
+            {
+                Console.WriteLine("Некоректний ввод");
+                return GetMatrix();
+            }
+            return ConsolMethod(line, column);
+        }
+        private static int[,] ConsolMethod(int line, int column)
+        {
             int[,] mas = new int[line, column];
             int z = 0;
             Console.WriteLine("Заповніть матрицю:");
@@ -21,8 +39,13 @@ namespace ConsoleApplication4
             {
                 for (int j = 0; j < column; j++)
                 {
-                    mas[i, j] = Convert.ToInt32(Console.ReadLine());
                     z++;
+                    string a = Console.ReadLine();
+                    if (!int.TryParse(a, out mas[i, j]))
+                    {
+                        Console.WriteLine("Некоректний ввод");
+                        return ConsolMethod(line,column);
+                    }
                 }
             }
             return mas;

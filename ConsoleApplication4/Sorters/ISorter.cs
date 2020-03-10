@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApplication4
 {
-    public interface ISort
+    public interface ISorter
     {
         string SortName { get; }
         int[] Sort(int[] x);

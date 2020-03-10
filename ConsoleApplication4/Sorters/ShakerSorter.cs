@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApplication4
 {
-    public class ShakerSorter:ISort
+    public class ShakerSorter:ISorter
     {
         public string SortName => "Шейкерне сортування";
         public void Swap(ref int e1, ref int e2)

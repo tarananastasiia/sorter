@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApplication4
 {
-    public class BubbleSorter:ISort
+    public class BubbleSorter:ISorter
     {
         public string SortName => "Метод бульбашки";
         public void Swap(ref int e1, ref int e2)

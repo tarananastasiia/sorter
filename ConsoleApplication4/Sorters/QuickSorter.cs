@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApplication4
 {
-    public class QuickSorter:ISort
+    public class QuickSorter:ISorter
     {
         public string SortName => "Швидке сортування";
         public static void Swap(ref int x, ref int y)

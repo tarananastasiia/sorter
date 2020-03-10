@@ -8,12 +8,12 @@ namespace ConsoleApplication4
 {
     public class MatrixTranspontator
     {
-        public T[,] CreateMatrix<T>(T[] array,int rows,int col)
+        public T[,] CreateMatrix<T>(T[] array, int rows, int col)
         {
             var matrix = new T[rows, col];
             for (int i = 0; i < array.Length; i++)
             {
-                matrix[i/col, i%col] = array[i];
+                matrix[i / col, i % col] = array[i];
             }
             for (int i = 0; i < rows; i++)
             {

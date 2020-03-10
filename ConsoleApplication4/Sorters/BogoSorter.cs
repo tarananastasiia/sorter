@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApplication4
 {
-    public class BogoSorter:ISort
+    public class BogoSorter:ISorter
     {
         public string SortName => "Рандомне сортування";
         public  bool IsSorted(int[] a)
